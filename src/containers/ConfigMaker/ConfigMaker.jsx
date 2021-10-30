@@ -41,7 +41,7 @@ const ConfigMaker = () => {
   return (
     <div>
       <div className="config">
-        <h2 className="title config__title">Собери свою пиццу</h2>
+        <h2 className="title config__title">Собери свою пиццу DEV</h2>
 
         <h3 className="config__pizza-name">Твоя пицца</h3>
 
