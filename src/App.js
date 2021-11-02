@@ -1,13 +1,12 @@
-import ConfigMaker from "./containers/ConfigMaker/ConfigMaker";
-
 import './index.scss';
 import {OrderListProvider} from "./context/OrderList";
+import OrderPage from "./pages/OrderPage";
 
 
 const App = () => {
   return (
     <OrderListProvider>
-      <ConfigMaker />
+      <OrderPage />
     </OrderListProvider>
   )
 }

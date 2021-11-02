@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
-import './ConfigMaker.scss';
+import {Link} from "react-router-dom";
 import Radio from "./components/Radio";
 import Checkbox from "./components/Checkbox";
 import {useOrderListContext} from "../../context/OrderList";
 import OrderList from "../OrderList/OrderList";
 import {pizzaAdditionalFields, pizzaRequiredFields} from "./ConfigMakerData";
+
+import './ConfigMaker.scss';
 
 
 const ConfigMaker = () => {
@@ -41,6 +43,8 @@ const ConfigMaker = () => {
   return (
     <div>
       <div className="config">
+        <Link to="/">В главное меню</Link>
+
         <h2 className="title config__title">Собери свою пиццу v.1.1</h2>
 
         <h3 className="config__pizza-name">Твоя пицца</h3>
