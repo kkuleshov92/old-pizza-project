@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {Link} from "react-router-dom";
+import {Link, useHistory, useLocation, useRouteMatch} from "react-router-dom";
 import Radio from "./components/Radio";
 import Checkbox from "./components/Checkbox";
 import {useOrderListContext} from "../../context/OrderList";
@@ -15,6 +15,12 @@ const ConfigMaker = () => {
     state,
     calcPriceOrder,
   } = useOrderListContext();
+
+  const history = useHistory();
+  const match = useRouteMatch();
+  const location = useLocation();
+
+  console.log(history, match, location);
 
   const [showOrder, setShowOrder] = useState(false);
 

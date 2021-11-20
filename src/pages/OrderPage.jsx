@@ -9,7 +9,7 @@ const OrderPage = () => {
   return (
     <>
       <Route exact path="/" component={Home}/>
-      <Route path="/order" component={ConfigMaker}/>
+      <Route path="/order/:pizza_id" component={ConfigMaker}/>
     </>
   )
 }
