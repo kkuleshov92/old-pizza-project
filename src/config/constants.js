@@ -37,3 +37,11 @@ export const initPizza = {
   defaultPrice: 200,
   price: 200,
 }
+
+export const ROUTES = {
+  registration: '/registration',
+  login: '/login',
+  receipt: '/home/receipt',
+  ordersTable: '/home/orders-table',
+  home: '/home',
+}

@@ -1,16 +1,24 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { ROUTES } from "../config/constants";
+import Receipt from "../containers/Receipt/Receipt";
+import OrdersTable from "../containers/OrdersTable/OrdersTable";
+import Constructor from "../containers/Constructor/Constructor";
+import Header from "../containers/Header/Header";
+
+
 
 const Home = () => {
   return (
-    <section className="home">
-      <Link to="/order/default_pizza">
-        Сделать заказ
-      </Link>
-      <Link to="/order/custom_pizza">
-        Сделать заказ
-      </Link>
-    </section>
+    <div className="home-wrapper">
+      <Header />
+
+      <Switch>
+        <Route exact path={ROUTES.home} component={Constructor}/>
+        <Route exact path={ROUTES.receipt} component={Receipt}/>
+        <Route exact path={ROUTES.ordersTable} component={OrdersTable}/>
+      </Switch>
+    </div>
   )
 }
 

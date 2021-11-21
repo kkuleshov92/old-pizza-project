@@ -3,7 +3,7 @@ import {initPizza} from "../config/constants";
 import {reducer} from "./reducer";
 
 
-export const OrderListContext = createContext()
+const OrderListContext = createContext()
 
 export const OrderListProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initPizza);

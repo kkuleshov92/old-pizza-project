@@ -1,28 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {Link, useHistory, useLocation, useRouteMatch} from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import Radio from "./components/Radio";
 import Checkbox from "./components/Checkbox";
-import {useOrderListContext} from "../../context/OrderList";
+import { useOrderListContext } from "../../context/OrderList";
 import OrderList from "../OrderList/OrderList";
-import {pizzaAdditionalFields, pizzaRequiredFields} from "./ConfigMakerData";
+import { pizzaAdditionalFields, pizzaRequiredFields } from "./ConstructorData";
 
-import './ConfigMaker.scss';
+import './Constructor.scss';
+import { ROUTES } from "../../config/constants";
 
 
-const ConfigMaker = () => {
+const Constructor = () => {
   const {
     state,
     calcPriceOrder,
   } = useOrderListContext();
 
   const history = useHistory();
-  const match = useRouteMatch();
-  const location = useLocation();
 
-  console.log(history, match, location);
-
-  const [showOrder, setShowOrder] = useState(false);
+  const [ showOrder, setShowOrder ] = useState(false);
 
   useEffect(() => {
     const oldPrice = state.price;
@@ -38,12 +35,14 @@ const ConfigMaker = () => {
     if (oldPrice !== price) {
       calcPriceOrder(price)
     }
-  }, [state, calcPriceOrder]);
+  }, [ state, calcPriceOrder ]);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    setShowOrder(true)
+    history.push(ROUTES.receipt);
+
+    // setShowOrder(true)
   }
 
   return (
@@ -102,13 +101,13 @@ const ConfigMaker = () => {
             })
           }
 
-          <button className="config__submit-btn">Заказать за {state.price} руб</button>
+          <NavLink to={ROUTES.receipt} className="config__submit-btn">Заказать за {state.price} руб</NavLink>
         </form>
 
-        {showOrder && <OrderList setShowOrder={setShowOrder} />}
+        {showOrder && <OrderList setShowOrder={setShowOrder}/>}
       </div>
     </div>
   )
 }
 
-export default ConfigMaker;
+export default Constructor;
