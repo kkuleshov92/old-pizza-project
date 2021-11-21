@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Radio from "./components/Radio";
 import Checkbox from "./components/Checkbox";
 import { useOrderListContext } from "../../context/OrderList";
@@ -101,7 +101,7 @@ const Constructor = () => {
             })
           }
 
-          <NavLink to={ROUTES.receipt} className="config__submit-btn">Заказать за {state.price} руб</NavLink>
+          <button className="config__submit-btn">Заказать за {state.price} руб</button>
         </form>
 
         {showOrder && <OrderList setShowOrder={setShowOrder}/>}

@@ -21,7 +21,7 @@ export const AuthProvider = ({children}) => {
 
   const logOut = () => {
     setIsAuth(false)
-    history.push(ROUTES.login)
+    history.push('/')
   }
 
   return (

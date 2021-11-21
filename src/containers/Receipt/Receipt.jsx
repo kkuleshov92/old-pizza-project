@@ -7,15 +7,28 @@ const Receipt = () => {
 
   const {register, handleSubmit} = useForm()
 
-  // const normalizeCardNumber = (value) => {
+  const normalizeCardNumber = (value) => {
+    return (
+      value
+        .replace(/\s/g, '')
+        .match(/.{1,4}/g)
+        ?.join(' ')
+        .substr(0, 19) || ''
+    )
+  }
+
+  // const normalizeCardDate = (value) => {
   //   return (
   //     value
   //       .replace(/\s/g, '')
-  //       .match(/.{1,4}/g)
-  //       ?.join(' ')
-  //       .substr(0, 19) || ''
+  //       .match(/.{2}/g)
+  //       ?.join('/')
+  //       .substr(0, 7) || ''
   //   )
   // }
+
+  const cardNumber = register('card_number');
+  const cardDate = register('card_date');
 
   const onSubmit = (data) => {
     console.log(data)
@@ -57,12 +70,28 @@ const Receipt = () => {
             Данные для оплаты
           </h4>
 
-          <input {...register('card_number')} placeholder="0000 0000 0000 0000"/>
+          <input
+            {...register('card_number')}
+            ref={cardNumber.ref}
+            onBlur={cardNumber.onBlur}
+            onChange={(event) => {
+              cardNumber.onChange(event)
+              event.target.value = normalizeCardNumber(event.target.value)
+            }}
+            placeholder="0000 0000 0000 0000"/>
 
           <div>
-            <input {...register('card_date')} placeholder="MM/YYYY"/>
+            <input
+              {...register('card_date')}
+              ref={cardDate.ref}
+              onBlur={cardDate.onBlur}
+              onChange={(event) => {
+                cardDate.onChange(event)
+                // event.target.value = normalizeCardDate(event.target.value)
+              }}
+              placeholder="MM/YYYY"/>
 
-            <input {...register('card_cvv')} placeholder="CVV"/>
+            <input {...register('card_cvv')} maxLength='3' placeholder="CVV"/>
           </div>
 
           <input {...register('card_name')} placeholder="Имя как на карте"/>
