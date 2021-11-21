@@ -1,6 +1,6 @@
 import './index.scss';
 import { OrderListProvider } from "./context/OrderList";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { ROUTES } from "./config/constants";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";

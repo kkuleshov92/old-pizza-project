@@ -7,11 +7,10 @@ import Constructor from "../containers/Constructor/Constructor";
 import Header from "../containers/Header/Header";
 
 
-
 const Home = () => {
   return (
     <div className="home-wrapper">
-      <Header />
+      <Header/>
 
       <Switch>
         <Route exact path={ROUTES.home} component={Constructor}/>
