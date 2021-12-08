@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {useOrderListContext} from "../../../context/OrderList";
+import { useDispatch } from "react-redux";
 
 
 const Radio = (props) => {
@@ -10,14 +10,19 @@ const Radio = (props) => {
     id,
   } = props;
 
-  const {
-    onChangeRequired
-  } = useOrderListContext()
+  const dispatch = useDispatch();
 
   const inputRef = useRef(null);
 
   const changeHandler = () => {
-    onChangeRequired('required_props', propCode, price, propTitle)
+    dispatch({
+      type: 'required_props',
+      payload: {
+        propCode,
+        price,
+        propTitle,
+      }
+    })
   }
 
   return (

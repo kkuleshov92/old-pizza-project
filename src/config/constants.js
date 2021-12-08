@@ -41,7 +41,7 @@ export const initPizza = {
 export const ROUTES = {
   registration: '/registration',
   login: '/login',
-  receipt: '/home/receipt',
+  order: '/home/order',
   ordersTable: '/home/orders-table',
   home: '/home',
 }

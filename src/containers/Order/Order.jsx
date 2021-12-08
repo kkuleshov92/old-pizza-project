@@ -3,8 +3,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 
 
-const Receipt = () => {
-
+const Order = () => {
   const {register, handleSubmit} = useForm()
 
   const normalizeCardNumber = (value) => {
@@ -105,4 +104,4 @@ const Receipt = () => {
   )
 }
 
-export default Receipt;
+export default Order;

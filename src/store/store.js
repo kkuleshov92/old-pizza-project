@@ -1,4 +1,8 @@
-export const reducer = (state, action) => {
+import { applyMiddleware, createStore } from 'redux';
+import { initPizza } from "../config/constants";
+import logger from 'redux-logger';
+
+const pizzaReducer = (state = initPizza, action) => {
   switch (action.type) {
     case 'required_props':
       return {
@@ -7,10 +11,10 @@ export const reducer = (state, action) => {
           ...state.settings,
           [action.payload.propCode]: {
             propName: state.settings[action.payload.propCode].propName,
-            arrProp: [{
+            arrProp: [ {
               value: action.payload.propTitle,
               price: action.payload.price,
-            }]
+            } ]
           }
         }
       }
@@ -57,3 +61,5 @@ export const reducer = (state, action) => {
       return state
   }
 }
+
+export const store = createStore(pizzaReducer, applyMiddleware(logger));

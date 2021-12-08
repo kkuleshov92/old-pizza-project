@@ -1,49 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Link, useHistory } from "react-router-dom";
 import Radio from "./components/Radio";
 import Checkbox from "./components/Checkbox";
-import { useOrderListContext } from "../../context/OrderList";
-import OrderList from "../OrderList/OrderList";
 import { pizzaAdditionalFields, pizzaRequiredFields } from "./ConstructorData";
 
 import './Constructor.scss';
 import { ROUTES } from "../../config/constants";
+import { useSelector } from "react-redux";
 
 
 const Constructor = () => {
-  const {
-    state,
-    calcPriceOrder,
-  } = useOrderListContext();
-
   const history = useHistory();
-
-  const [ showOrder, setShowOrder ] = useState(false);
-
-  useEffect(() => {
-    const oldPrice = state.price;
-    let price = +state.defaultPrice;
-
-    for (let key in state.settings) {
-      // eslint-disable-next-line
-      state.settings[key].arrProp.forEach(item => {
-        price += item.price;
-      })
-    }
-
-    if (oldPrice !== price) {
-      calcPriceOrder(price)
-    }
-  }, [ state, calcPriceOrder ]);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    history.push(ROUTES.receipt);
-
-    // setShowOrder(true)
+    history.push(ROUTES.order);
   }
+
+  const price = useSelector(state => state.price);
 
   return (
     <div>
@@ -101,10 +77,8 @@ const Constructor = () => {
             })
           }
 
-          <button className="config__submit-btn">Заказать за {state.price} руб</button>
+          <button className="config__submit-btn">Заказать {price} за руб</button>
         </form>
-
-        {showOrder && <OrderList setShowOrder={setShowOrder}/>}
       </div>
     </div>
   )

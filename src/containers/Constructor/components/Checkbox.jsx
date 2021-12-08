@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {useOrderListContext} from "../../../context/OrderList";
+import { useDispatch } from "react-redux";
 
 const Checkbox = (props) => {
   const {
@@ -10,9 +10,7 @@ const Checkbox = (props) => {
     propCode,
   } = props
 
-  const {
-    onChangeAdditional
-  } = useOrderListContext()
+  const dispatch = useDispatch();
 
   const inputRef = useRef(null);
 
@@ -20,7 +18,15 @@ const Checkbox = (props) => {
     const flag = inputRef.current.checked;
 
     let change = parseFloat(flag ? price : `-${price}`);
-    onChangeAdditional('additional_props', propCode, change, propTitle)
+
+    dispatch({
+      type: 'additional_props',
+      payload: {
+        propCode,
+        change,
+        propTitle,
+      },
+    });
   }
 
   return (

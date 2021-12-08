@@ -1,14 +1,9 @@
 import React from 'react';
 
 import './OrderList.scss';
-import {useOrderListContext} from "../../context/OrderList";
 
 
 const OrderList = ({setShowOrder}) => {
-  const {
-    state
-  } = useOrderListContext();
-
   const onCloseModal = (e) => {
     (e.currentTarget === e.target) && setShowOrder(false)
   }
@@ -25,32 +20,32 @@ const OrderList = ({setShowOrder}) => {
             Базовая цена - 200 р.
           </div>
 
-          {
-            Object.values(state.settings).map(item => {
-              return (item.arrProp.length
-                  ? (<div className="orderList__item" key={item.propName}>
-                    <h5 className="orderList__item-title">
-                      {item.propName}
-                    </h5>
+          {/*{*/}
+          {/*  Object.values(state.settings).map(item => {*/}
+          {/*    return (item.arrProp.length*/}
+          {/*        ? (<div className="orderList__item" key={item.propName}>*/}
+          {/*          <h5 className="orderList__item-title">*/}
+          {/*            {item.propName}*/}
+          {/*          </h5>*/}
 
-                    {
-                      item.arrProp.map(propItem => {
-                        return (
-                          <div className="orderList__item-row" key={propItem.value}>
-                            {`${propItem.value}${(propItem.price > 0) ? (` - ${propItem.price} р.`) : ''}`}
-                          </div>
-                        )
-                      })
-                    }
-                  </div>)
-                  : null
-              )
-            })
-          }
+          {/*          {*/}
+          {/*            item.arrProp.map(propItem => {*/}
+          {/*              return (*/}
+          {/*                <div className="orderList__item-row" key={propItem.value}>*/}
+          {/*                  {`${propItem.value}${(propItem.price > 0) ? (` - ${propItem.price} р.`) : ''}`}*/}
+          {/*                </div>*/}
+          {/*              )*/}
+          {/*            })*/}
+          {/*          }*/}
+          {/*        </div>)*/}
+          {/*        : null*/}
+          {/*    )*/}
+          {/*  })*/}
+          {/*}*/}
         </div>
 
         <p className="orderList__total-price">
-          Общая сумма {state.price} р.
+          Общая сумма  р.
         </p>
       </div>
     </div>

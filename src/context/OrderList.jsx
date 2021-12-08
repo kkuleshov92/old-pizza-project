@@ -1,9 +1,9 @@
 import React, {createContext, useContext, useReducer} from 'react';
 import {initPizza} from "../config/constants";
-import {reducer} from "./reducer";
-
 
 const OrderListContext = createContext()
+
+const reducer = {}
 
 export const OrderListProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initPizza);
